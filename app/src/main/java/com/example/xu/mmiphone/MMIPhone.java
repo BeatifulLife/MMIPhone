@@ -25,7 +25,11 @@ public class MMIPhone {
                             if (receiveDate[0].length() > 8){
                                 //+EGMR: ""
                                 String str = receiveDate[0].substring(8,receiveDate[0].length()-1);
-                                SystemProperties.set("gsm.mmi.cali", str);
+                                if ("".equals(str)) {
+                                    SystemProperties.set("gsm.mmi.cali", "SPACE");
+                                }else {
+                                    SystemProperties.set("gsm.mmi.cali", str);
+                                }
                             }else {
                                 SystemProperties.set("gsm.mmi.cali", receiveDate[0]);
                             }
